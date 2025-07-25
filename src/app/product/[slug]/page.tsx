@@ -84,23 +84,25 @@ const ProductPage = async ({ searchParams }: PageProps) => {
   );
 
   return (
-    <div className="bg-white max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      {/* Hero Section */}
+    <div className="bg-gray-100">
       <HeroSection data={data} />
-      {/* Course Instructor */}
-      <CourseInstructor instructorSections={instructorSections} />
-      {/* Course Features */}
-      <CourseFeatures />
-      {/* Free PDF Section */}
-      <FreePDFSection />
-      {/* What You'll Learn */}
-      |<WhatYouWillLearn pointerSections={pointerSections} />
-      {/* Course Content */}
-      <CourseContent featureSections={featureSections} />
-      {/* Checklist */}
-      <Checklist data={data} />
-      {/* Course Details */}
-      <CourseDetails aboutSections={aboutSections} />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="lg:grid lg:grid-cols-3 lg:gap-x-8">
+          <div className="lg:col-span-2 space-y-8">
+            <CourseInstructor instructorSections={instructorSections} />
+            <CourseFeatures />
+            <WhatYouWillLearn pointerSections={pointerSections} />
+            <CourseContent featureSections={featureSections} />
+            <CourseDetails aboutSections={aboutSections} />
+            <FreePDFSection />
+          </div>
+          <div className="mt-8 lg:mt-0 lg:col-span-1">
+            <div className="sticky top-24 space-y-8">
+              <Checklist data={data} />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

@@ -1,19 +1,52 @@
 import { CourseData } from '@/types';
+import { Play, Star, Users } from 'lucide-react';
 
 const Checklist = ({ data }: { data: CourseData }) => {
+  const trailerVideo = data.media.find(
+    media =>
+      media.resource_type === 'video' ||
+      media.thumbnail_url?.includes('youtube')
+  );
+
   return (
-    <div>
+    <div className="bg-white rounded-lg shadow-lg p-6">
+      {trailerVideo && (
+        <div className="relative mb-6">
+          <div className="relative aspect-video rounded-lg overflow-hidden">
+            <img
+              src={trailerVideo.thumbnail_url}
+              alt="Course Preview"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+              <div className="bg-white rounded-full p-4 cursor-pointer">
+                <Play
+                  className="w-8 h-8 text-gray-800 ml-1"
+                  fill="currentColor"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <div className="text-3xl font-bold text-gray-900 mb-2">
+        ৳3850
+        <span className="text-xl text-gray-500 line-through ml-2">
+          ৳5000
+        </span>
+      </div>
+
+      <button className="w-full bg-green-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-green-700 transition-colors mb-6">
+        {data.cta_text.name}
+      </button>
+
       {data.checklist.length > 0 && (
-        <div className="py-8 border-t">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">
-            কোর্স সুবিধা
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <h3 className="text-xl font-bold text-gray-900 mb-4">এই কোর্সে যা থাকছে</h3>
+          <ul className="space-y-3">
             {data.checklist.map(item => (
-              <div
-                key={item.id}
-                className="flex items-center space-x-3 p-3 bg-green-50 rounded-lg border border-green-200"
-              >
+              <li key={item.id} className="flex items-center space-x-3">
                 <div className="flex-shrink-0">
                   <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
                     <svg
@@ -29,10 +62,10 @@ const Checklist = ({ data }: { data: CourseData }) => {
                     </svg>
                   </div>
                 </div>
-                <span className="text-gray-900 font-medium">{item.text}</span>
-              </div>
+                <span className="text-gray-700">{item.text}</span>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       )}
     </div>

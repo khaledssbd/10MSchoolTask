@@ -2,31 +2,29 @@ import { Download } from 'lucide-react';
 
 const FreePDFSection = () => {
   return (
-    <div className="py-8 border-t">
-      <div className="bg-gradient-to-r from-orange-500 to-red-500 rounded-lg p-8 text-white">
-        <div className="flex items-center justify-between">
-          <div className="flex-1">
-            <div className="flex items-center mb-2">
-              <Download className="w-6 h-6 mr-2" />
-              <span className="bg-white text-orange-600 px-3 py-1 rounded-full text-sm font-semibold">
-                Free PDF
-              </span>
-            </div>
-            <h3 className="text-2xl font-bold mb-2">IELTS Complete Book</h3>
-            <p className="text-orange-100 mb-4">
-              সম্পূর্ণ IELTS গাইডবুক ফ্রিতে ডাউনলোড করুন
-            </p>
-            <button className="bg-white text-orange-600 px-6 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
-              ডাউনলোড করুন
-            </button>
+    <div className="bg-black rounded-lg p-8 text-white mt-8">
+      <div className="flex flex-col md:flex-row items-center justify-between">
+        <div className="flex-1 mb-6 md:mb-0 md:pr-8">
+          <div className="flex items-center mb-3">
+            <span className="bg-yellow-400 text-black px-3 py-1 rounded-full text-sm font-bold">
+              Free PDF
+            </span>
           </div>
-          <div className="hidden md:block">
-            <img
-              src="/10mslogo-svg.svg?height=120&width=200&text=IELTS+Book+Cover"
-              alt="IELTS Book"
-              className="h-32 object-contain"
-            />
-          </div>
+          <h3 className="text-2xl font-bold mb-2">IELTS Confirm 7+ Score (Guideline)</h3>
+          <p className="text-gray-300 mb-4">
+            IELTS ভালো score করার সেরা Strategies জানুন সেরা মেন্টরের অভিজ্ঞতায়।
+          </p>
+          <button className="bg-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors flex items-center">
+            <Download className="w-5 h-5 mr-2" />
+            <span>PDF Download করুন</span>
+          </button>
+        </div>
+        <div className="flex-shrink-0">
+          <img
+            src="https://placehold.co/200x150/333333/FFFFFF?text=Guideline+Cover"
+            alt="IELTS Guideline"
+            className="h-40 object-contain rounded-lg"
+          />
         </div>
       </div>
     </div>

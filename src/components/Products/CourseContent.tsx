@@ -1,5 +1,5 @@
 import { Section } from '@/types';
-import { Clock } from 'lucide-react';
+import { PlayCircle, Lock } from 'lucide-react';
 
 const CourseContent = ({
   featureSections = [],
@@ -7,31 +7,29 @@ const CourseContent = ({
   featureSections: Section[];
 }) => {
   return (
-    <div>
+    <div className="bg-white rounded-lg shadow-lg p-6">
       {featureSections.map(section => (
-        <div key={section.order_idx} className="py-8 border-t">
+        <div key={section.order_idx}>
           <h2 className="text-2xl font-bold text-gray-900 mb-6">
             {section.name}
           </h2>
-          <div className="space-y-4">
-            {section.values?.map((item, index) => (
-              <div key={item.id} className="border border-gray-200 rounded-lg">
-                <div className="p-4 bg-gray-50 border-b border-gray-200">
-                  <div className="flex items-center justify-between">
-                    <h4 className="font-semibold text-gray-900">
-                      {index + 1}. {item.title}
-                    </h4>
-                    <div className="flex items-center text-sm text-gray-600">
-                      <Clock className="w-4 h-4 mr-1" />
-                      <span>45 min</span>
-                    </div>
-                  </div>
+          <div className="space-y-3">
+            {section.values?.map(item => (
+              <div
+                key={item.id}
+                className="flex items-center justify-between p-3 rounded-lg transition-colors hover:bg-gray-100"
+              >
+                <div className="flex items-center space-x-3">
+                  {item.is_free ? (
+                    <PlayCircle className="w-6 h-6 text-green-500" />
+                  ) : (
+                    <Lock className="w-6 h-6 text-gray-400" />
+                  )}
+                  <span className="font-medium text-gray-800">{item.title}</span>
                 </div>
-                {item.description && (
-                  <div className="p-4">
-                    <p className="text-gray-700">{item.description}</p>
-                  </div>
-                )}
+                <button className="text-sm font-semibold text-green-600 hover:underline">
+                  {item.is_free ? 'ফ্রি দেখুন' : 'লক করা'}
+                </button>
               </div>
             ))}
           </div>

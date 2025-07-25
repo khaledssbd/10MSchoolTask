@@ -6,19 +6,18 @@ const CourseDetails = ({
   aboutSections: Section[];
 }) => {
   return (
-    <div>
+    <div className="bg-white rounded-lg shadow-lg p-6">
       {aboutSections.map(section => (
-        <div key={section.order_idx} className="py-8 border-t">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">
+        <div key={section.order_idx}>
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">
             {section.name}
           </h2>
-          <div className="prose prose-gray max-w-none">
-            <div
-              dangerouslySetInnerHTML={{
-                __html: section.description || '',
-              }}
-            />
-          </div>
+          <div
+            className="prose prose-gray max-w-none"
+            dangerouslySetInnerHTML={{
+              __html: section.description || '',
+            }}
+          />
         </div>
       ))}
     </div>
