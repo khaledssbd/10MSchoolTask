@@ -9,6 +9,13 @@ import {
   Users,
 } from 'lucide-react';
 
+const colorMap = {
+  blue: 'bg-blue-500',
+  indigo: 'bg-indigo-500',
+  red: 'bg-red-500',
+  green: 'bg-green-500',
+};
+
 const features = [
   {
     icon: Play,
@@ -45,19 +52,21 @@ const CourseFeatures = () => {
       <h2 className="text-2xl font-bold text-gray-900 mb-6">
         কোর্সটি যেভাবে সাজানো হয়েছে
       </h2>
-      <div className="bg-[#111827] rounded-lg shadow-lg py-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="bg-[#111827] rounded-lg shadow-lg p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
         {features.map((feature, index) => {
           console.log({ color: feature.color });
           return (
             <div key={index} className="flex items-start space-x-4">
               <div
-                className={`flex-shrink-0 w-12 h-12 rounded-full bg-${feature.color}-500 text-white flex items-center justify-center`}
+                className={`flex-shrink-0 w-12 h-12 rounded-full ${
+                  colorMap[feature.color as keyof typeof colorMap]
+                } text-white flex items-center justify-center`}
               >
                 <feature.icon className="w-6 h-6" />
               </div>
               <div>
-                <h3 className="font-bold text-white/90">{feature.title}</h3>
-                <p className="text-sm text-white/70">{feature.description}</p>
+                <h3 className="font-bold text-white/80">{feature.title}</h3>
+                <p className="text-sm text-white/50">{feature.description}</p>
               </div>
             </div>
           );
