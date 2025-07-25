@@ -86,20 +86,18 @@ const ProductPage = async ({ searchParams }: PageProps) => {
   return (
     <div className="bg-gray-100">
       <HeroSection data={data} />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="lg:grid lg:grid-cols-3 lg:gap-x-8">
-          <div className="lg:col-span-2 space-y-8">
-            <CourseInstructor instructorSections={instructorSections} />
-            <CourseFeatures />
-            <WhatYouWillLearn pointerSections={pointerSections} />
-            <CourseContent featureSections={featureSections} />
-            <CourseDetails aboutSections={aboutSections} />
-            <FreePDFSection />
-          </div>
-          <div className="mt-8 lg:mt-0 lg:col-span-1">
-            <div className="sticky top-24 space-y-8">
-              <Checklist data={data} />
-            </div>
+      <div className="max-w-7xl mx-auto lg:grid lg:grid-cols-3 lg:gap-x-8">
+        <div className="px-4 sm:px-6 lg:px-8 py-8 lg:col-span-2 space-y-8">
+          <CourseInstructor instructorSections={instructorSections} />
+          <CourseFeatures />
+          <WhatYouWillLearn pointerSections={pointerSections} />
+          <CourseContent featureSections={featureSections} />
+          <CourseDetails aboutSections={aboutSections} />
+          <FreePDFSection />
+        </div>
+        <div className="mt-8 lg:-mt-42 lg:col-span-1">
+          <div className="sticky top-24 space-y-8">
+            <Checklist data={data} />
           </div>
         </div>
       </div>

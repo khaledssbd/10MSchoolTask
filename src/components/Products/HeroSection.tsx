@@ -1,5 +1,5 @@
 import { CourseData } from '@/types';
-import { Play, Star, Users } from 'lucide-react';
+import {  Star } from 'lucide-react';
 
 const HeroSection = ({ data }: { data: CourseData }) => {
   // Find trailer video
@@ -12,7 +12,7 @@ const HeroSection = ({ data }: { data: CourseData }) => {
   // console.log({ trailerVideo });
 
   return (
-    <div className="bg-blue-900 text-white py-8">
+    <div className="bg-gradient-to-tl from-[#09395d] via-[#060129] to-[#040112] text-white py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2">
