@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Play, ChevronLeft, ChevronRight } from 'lucide-react';
 import YouTube from 'react-youtube';
 import { CourseData } from '@/types';
+import Image from 'next/image';
 
 const Checklist = ({ data }: { data: CourseData }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -68,16 +69,20 @@ const Checklist = ({ data }: { data: CourseData }) => {
                 className="w-full h-full"
               />
             ) : currentItem.resource_type === 'image' ? (
-              <img
+              <Image
                 src={currentItem.resource_value}
                 alt="Course Preview"
+                width={400}
+                height={400}
                 className="w-full h-full object-cover"
               />
             ) : (
               <>
-                <img
-                  src={currentItem.thumbnail_url}
+                <Image
+                  src={currentItem.thumbnail_url!}
                   alt="Video Thumbnail"
+                  width={400}
+                  height={400}
                   className="w-full h-full object-cover"
                 />
                 <div
@@ -115,7 +120,7 @@ const Checklist = ({ data }: { data: CourseData }) => {
           {/* Thumbnail gallery */}
           {galleryItems.length > 1 && (
             <div className="flex gap-2 mt-2 overflow-x-auto py-2">
-              {galleryItems.map((item, index) => (
+              {galleryItems?.map((item, index) => (
                 <div
                   key={index}
                   onClick={() => handleThumbnailClick(index)}
@@ -125,13 +130,15 @@ const Checklist = ({ data }: { data: CourseData }) => {
                       : 'border-transparent'
                   }`}
                 >
-                  <img
+                  <Image
                     src={
                       item.resource_type === 'video'
-                        ? item.thumbnail_url
+                        ? item.thumbnail_url!
                         : item.resource_value
                     }
-                    alt=""
+                    alt="Thumbnail url"
+                    width={400}
+                    height={400}
                     className="w-full h-full object-cover"
                   />
                   {item.resource_type === 'video' && (
@@ -174,7 +181,7 @@ const Checklist = ({ data }: { data: CourseData }) => {
               এই কোর্সে যা থাকছে
             </h3>
             <ul className="space-y-3">
-              {data.checklist.map(item => (
+              {data.checklist?.map(item => (
                 <li key={item.id} className="flex items-center space-x-3">
                   <div className="flex-shrink-0">
                     <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">

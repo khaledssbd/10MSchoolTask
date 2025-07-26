@@ -1,4 +1,5 @@
 import { Facebook, Instagram, X, Linkedin, Youtube } from 'lucide-react';
+import Image from 'next/image';
 
 const Footer = () => {
   const socialLinks = [
@@ -28,10 +29,12 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <img
+            <Image
               src="/10mslogo-svg.svg?height=32&width=120&text=10+Minute+School"
               alt="10 Minute School"
               className="h-8 mb-4"
+              width={400}
+              height={400}
             />
             <p className="text-gray-400 text-sm">
               বাংলাদেশের সবচেয়ে বড় অনলাইন শিক্ষা প্ল্যাটফর্ম

@@ -68,16 +68,25 @@ const ProductPage = async ({ searchParams }: PageProps) => {
 
   // Separate sections by type
   const instructorSections = data.sections.filter(
-    (section: { type: string }) => section.type === 'instructor'
+    (section: { type: string }) => section.type === 'instructors'
   );
 
   const featureSections = data.sections.filter(
     (section: { type: string }) => section.type === 'features'
   );
 
+  // console.log({ featureSections });
+
   const pointerSections = data.sections.filter(
     (section: { type: string }) => section.type === 'pointers'
   );
+
+  // console.log({ pointerSections });
+
+  const pdfSections = data.sections.filter(
+    (section: { type: string }) => section.type === 'group_join_engagement'
+  );
+
 
   const aboutSections = data.sections.filter(
     (section: { type: string }) => section.type === 'about'
@@ -89,11 +98,11 @@ const ProductPage = async ({ searchParams }: PageProps) => {
       <div className="max-w-7xl mx-auto lg:grid lg:grid-cols-3 lg:gap-x-8">
         <div className="px-4 sm:px-6 lg:px-8 py-8 lg:col-span-2 space-y-8">
           <CourseInstructor instructorSections={instructorSections} />
-          <CourseFeatures />
+          <CourseFeatures featureSections={featureSections} />
+          <FreePDFSection pdfSections={pdfSections} />
           <WhatYouWillLearn pointerSections={pointerSections} />
           <CourseContent featureSections={featureSections} />
           <CourseDetails aboutSections={aboutSections} />
-          <FreePDFSection />
         </div>
         <div className="mt-8 lg:-mt-42 lg:col-span-1">
           <div className="sticky top-24 space-y-8">

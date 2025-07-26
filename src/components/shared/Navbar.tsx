@@ -1,15 +1,19 @@
 'use client';
 
+import Image from 'next/image';
+
 const Navbar = () => {
   return (
     <header className="sticky top-0 z-20 w-full bg-white shadow-sm border-b border-gray-200">
       <div className=" mx-auto px-4 sm:px-6 md:px-12 lg:px-20">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center space-x-8">
-            <img
-              src="/10mslogo-svg.svg?height=32&width=120&text=10+Minute+School"
+            <Image
+              src="/10mslogo-svg.svg"
               alt="10 Minute School"
               className="h-8"
+              width={400}
+              height={400}
             />
             <nav className="hidden md:flex space-x-6">
               <a
