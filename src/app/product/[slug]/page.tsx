@@ -16,7 +16,7 @@ import CourseInstructor from '@/components/Products/CourseInstructor';
 import CourseFeatures from '@/components/Products/CourseFeatures';
 import FreePDFSection from '@/components/Products/FreePDFSection';
 import WhatYouWillLearn from '@/components/Products/WhatYouWillLearn';
-import CourseContent from '@/components/Products/CourseContent';
+import ContentPreview from '@/components/Products/ContentPreview';
 import Checklist from '@/components/Products/Checklist';
 import CourseDetails from '@/components/Products/CourseDetails';
 
@@ -62,7 +62,7 @@ const ProductPage = async ({ searchParams }: PageProps) => {
 
   const data = await getProductData(query.lang);
 
-  // console.log({ data });
+  console.dir({ data }, { depth: 'infinity' });
 
   // console.log({ media: data.media });
 
@@ -73,6 +73,10 @@ const ProductPage = async ({ searchParams }: PageProps) => {
 
   const featureSections = data.sections.filter(
     (section: { type: string }) => section.type === 'features'
+  );
+
+  const contentPreview = data.sections.filter(
+    (section: { type: string }) => section.type === 'content_preview'
   );
 
   // console.log({ featureSections });
@@ -87,7 +91,6 @@ const ProductPage = async ({ searchParams }: PageProps) => {
     (section: { type: string }) => section.type === 'group_join_engagement'
   );
 
-
   const aboutSections = data.sections.filter(
     (section: { type: string }) => section.type === 'about'
   );
@@ -101,10 +104,10 @@ const ProductPage = async ({ searchParams }: PageProps) => {
           <CourseFeatures featureSections={featureSections} />
           <FreePDFSection pdfSections={pdfSections} />
           <WhatYouWillLearn pointerSections={pointerSections} />
-          <CourseContent featureSections={featureSections} />
+          <ContentPreview contentPreview={contentPreview} />
           <CourseDetails aboutSections={aboutSections} />
         </div>
-        <div className="mt-8 lg:-mt-42 lg:col-span-1">
+        <div className="mt-8 lg:-mt-64 lg:col-span-1">
           <div className="sticky top-24 space-y-8">
             <Checklist data={data} />
           </div>

@@ -6,7 +6,7 @@ const CourseFeatures = ({
 }: {
   featureSections: Section[];
 }) => {
-  console.dir({ featureSections }, { depth: 'infinity' });
+  // console.dir({ featureSections }, { depth: 'infinity' });
 
   return (
     <div className="p-6">

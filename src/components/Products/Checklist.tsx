@@ -11,7 +11,7 @@ const Checklist = ({ data }: { data: CourseData }) => {
   const [playingVideoId, setPlayingVideoId] = useState<string | null>(null);
 
   const galleryItems = data.media.filter(
-    media => media.name === 'preview_gallery' || media.name === 'book_preview'
+    media => media.name === 'preview_gallery'
   );
 
   const currentItem = galleryItems[currentIndex];
@@ -89,11 +89,13 @@ const Checklist = ({ data }: { data: CourseData }) => {
                   className="absolute inset-0 bg-black/40 flex items-center justify-center cursor-pointer"
                   onClick={handlePlayClick}
                 >
-                  <div className="bg-white rounded-full p-4">
-                    <Play
-                      className="w-8 h-8 text-gray-800 ml-1"
-                      fill="currentColor"
-                    />
+                  <div className="bg-white/20 rounded-full p-1">
+                    <div className="bg-white rounded-full p-3">
+                      <Play
+                        className="w-6 h-6 text-green-600 ml-1"
+                        fill="currentColor"
+                      />
+                    </div>
                   </div>
                 </div>
               </>
@@ -124,7 +126,7 @@ const Checklist = ({ data }: { data: CourseData }) => {
                 <div
                   key={index}
                   onClick={() => handleThumbnailClick(index)}
-                  className={`flex-shrink-0 w-16 h-16 rounded-md overflow-hidden cursor-pointer border-2 ${
+                  className={`flex-shrink-0 aspect-video h-8 rounded-md overflow-x-hidden cursor-pointer border-2 ${
                     currentIndex === index
                       ? 'border-green-500'
                       : 'border-transparent'
@@ -142,8 +144,15 @@ const Checklist = ({ data }: { data: CourseData }) => {
                     className="w-full h-full object-cover"
                   />
                   {item.resource_type === 'video' && (
-                    <div className="relative -mt-6 flex justify-center">
-                      <Play className="w-4 h-4 text-white" />
+                    <div className="relative -mt-6 flex justify-center items-center">
+                      <div className="bg-white/40 rounded-full p-0.5 w-5 h-5">
+                        <div className="bg-white rounded-full p-1 flex justify-center items-center">
+                          <Play
+                            className="w-2 h-2 text-red-500"
+                            fill="currentColor"
+                          />
+                        </div>
+                      </div>
                     </div>
                   )}
                 </div>
@@ -171,7 +180,7 @@ const Checklist = ({ data }: { data: CourseData }) => {
           </div>
         </div>
 
-        <button className="w-full bg-green-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-green-700 transition-colors mb-6">
+        <button className="w-full bg-green-600 text-white py-2 px-6 rounded-lg text-sm font-semibold hover:bg-green-700 transition-colors mt-4 mb-6 border-b-4 border-gray-600/70">
           {data.cta_text.name}
         </button>
 
@@ -184,21 +193,18 @@ const Checklist = ({ data }: { data: CourseData }) => {
               {data.checklist?.map(item => (
                 <li key={item.id} className="flex items-center space-x-3">
                   <div className="flex-shrink-0">
-                    <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
-                      <svg
-                        className="w-3 h-3 text-white"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
+                    <div className="w-5 h-5 rounded-full flex items-center justify-center">
+                      <Image
+                        src={item.icon}
+                        alt={item.text}
+                        width={350}
+                        height={350}
+                      />
                     </div>
                   </div>
-                  <span className="text-gray-700">{item.text}</span>
+                  <span className="text-gray-700 text-sm font-medium">
+                    {item.text}
+                  </span>
                 </li>
               ))}
             </ul>
