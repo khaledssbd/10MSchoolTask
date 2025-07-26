@@ -100,8 +100,14 @@ const ProductPage = async ({ searchParams }: PageProps) => {
   const exclusiveFeatureSection = data.sections.filter(
     (section: { type: string }) => section.type === 'feature_explanations'
   );
+
   const freeItemsSection = data.sections.filter(
     (section: { type: string }) => section.type === 'free_items'
+  );
+
+
+  const testimonialsSection = data.sections.filter(
+    (section: { type: string }) => section.type === 'testimonials'
   );
 
   return (
