@@ -467,9 +467,9 @@ export type ToggleType = {
 };
 
 const ContentPreview = ({
-  contentPreview = [],
+  contentPreviewSection = [],
 }: {
-  contentPreview: Section[];
+  contentPreviewSection: Section[];
 }) => {
   const [expandedSections, setExpandedSections] = useState<ToggleType>({
     intro: true,
@@ -487,10 +487,10 @@ const ContentPreview = ({
 
   return (
     <div className="p-6">
-      {contentPreview?.map(section => (
-        <div key={section.order_idx}>
+      {contentPreviewSection?.map(subSection => (
+        <div key={subSection.order_idx}>
           <h2 className="text-xl font-bold text-gray-900 mb-6">
-            {section.name}
+            {subSection.name}
           </h2>
           <div className="bg-white rounded-md border border-gray-300 p-6 space-y-3">
             {/* {section.values?.map(item => (
@@ -513,23 +513,23 @@ const ContentPreview = ({
                 </button>
               </div>
             ))} */}
-            {visibleSections.map(section => (
+            {visibleSections.map(vSubSection => (
               <div
-                key={section.id}
+                key={vSubSection.id}
                 className="border-b border-gray-100 last:border-b-0"
               >
                 <div
                   className={`flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 cursor-pointer font-semibold text-gray-700 ${
-                    expandedSections[section.id]
+                    expandedSections[vSubSection.id]
                       ? 'border-b border-gray-200'
                       : ''
                   }`}
-                  onClick={() => toggleSection(section.id)}
+                  onClick={() => toggleSection(vSubSection.id)}
                 >
-                  <span>{section.title}</span>
+                  <span>{vSubSection.title}</span>
                   <span
                     className={`transform transition-transform duration-300 text-lg ${
-                      expandedSections[section.id] ? 'rotate-180' : ''
+                      expandedSections[vSubSection.id] ? 'rotate-180' : ''
                     }`}
                   >
                     <ChevronDown className="w-5 h-5" />
@@ -537,13 +537,13 @@ const ContentPreview = ({
                 </div>
                 <div
                   className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                    expandedSections[section.id]
+                    expandedSections[vSubSection.id]
                       ? 'max-h-screen opacity-100'
                       : 'max-h-0 opacity-0'
                   }`}
                 >
                   <div className="p-4 pt-2">
-                    {section.items.map((item, index) => {
+                    {vSubSection.items.map((item, index) => {
                       const MainItemIcon = getIcon(item.type);
 
                       return (

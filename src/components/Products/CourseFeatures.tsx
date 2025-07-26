@@ -2,21 +2,21 @@ import { Section } from '@/types';
 import Image from 'next/image';
 
 const CourseFeatures = ({
-  featureSections = [],
+  featureSection = [],
 }: {
-  featureSections: Section[];
+  featureSection: Section[];
 }) => {
   // console.dir({ featureSections }, { depth: 'infinity' });
 
   return (
     <div className="p-6">
-      {featureSections?.map(section => (
-        <div key={section.order_idx}>
+      {featureSection?.map(subSection => (
+        <div key={subSection.order_idx}>
           <h2 className="text-xl font-bold text-gray-900 mb-6">
-            {section.name}
+            {subSection.name}
           </h2>
           <div className="bg-[#111827] rounded-lg shadow-lg p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-            {section.values?.map((feature, index) => (
+            {subSection.values?.map((feature, index) => (
               <div key={index} className="flex items-start space-x-4">
                 <div className="flex-shrink-0 w-10 h-10 rounded-full text-white flex items-center justify-center">
                   <Image

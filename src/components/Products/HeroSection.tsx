@@ -1,16 +1,7 @@
 import { CourseData } from '@/types';
-import {  Star } from 'lucide-react';
+import { Star } from 'lucide-react';
 
 const HeroSection = ({ data }: { data: CourseData }) => {
-  // Find trailer video
-  const trailerVideo = data.media.find(
-    media =>
-      media.resource_type === 'video' ||
-      media.thumbnail_url?.includes('youtube')
-  );
-
-  // console.log({ trailerVideo });
-
   return (
     <div className="bg-gradient-to-tl from-[#09395d] via-[#06011f] to-[#050124] text-white py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

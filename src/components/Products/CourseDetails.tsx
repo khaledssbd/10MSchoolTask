@@ -5,11 +5,7 @@ import { useState } from 'react';
 import { ToggleType } from './ContentPreview';
 import { ChevronDown } from 'lucide-react';
 
-const CourseDetails = ({
-  aboutSections = [],
-}: {
-  aboutSections: Section[];
-}) => {
+const CourseDetails = ({ aboutSection = [] }: { aboutSection: Section[] }) => {
   // console.log(aboutSections);
 
   const [expandedSections, setExpandedSections] = useState<ToggleType>({
@@ -25,10 +21,10 @@ const CourseDetails = ({
 
   return (
     <div className="p-6">
-      {aboutSections?.map(section => (
-        <div key={section.order_idx}>
+      {aboutSection?.map(subSection => (
+        <div key={subSection.order_idx}>
           <h2 className="text-xl font-bold text-gray-900 mb-6">
-            {section.name}
+            {subSection.name}
           </h2>
           <div className="bg-white rounded-md border border-gray-300 p-6 space-y-3">
             {/* {section.values?.map((item, index) => (
@@ -48,25 +44,25 @@ const CourseDetails = ({
               </div>
             ))} */}
 
-            {section.values?.map(section => (
+            {subSection.values?.map(SsubSection => (
               <div
-                key={section.id}
+                key={SsubSection.id}
                 className="border-b border-dashed border-gray-300 last:border-b-0"
               >
                 <div
-                  className="flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 cursor-pointer font-semibold text-gray-700"
-                  onClick={() => toggleSection(section.id)}
+                  className="flex justify-between items-center py-4 bg-gray-50 hover:bg-gray-100 cursor-pointer font-semibold text-gray-700"
+                  onClick={() => toggleSection(SsubSection.id)}
                 >
                   <div
                     className="prose prose-gray max-w-none text-gray-700"
                     dangerouslySetInnerHTML={{
-                      __html: section.title || '',
+                      __html: SsubSection.title || '',
                     }}
                   />
 
                   <span
                     className={`transform transition-transform duration-300 text-lg ${
-                      expandedSections[section.id] ? 'rotate-180' : ''
+                      expandedSections[SsubSection.id] ? 'rotate-180' : ''
                     }`}
                   >
                     <ChevronDown className="w-5 h-5" />
@@ -74,15 +70,15 @@ const CourseDetails = ({
                 </div>
                 <div
                   className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                    expandedSections[section.id]
+                    expandedSections[SsubSection.id]
                       ? 'max-h-screen opacity-100'
                       : 'max-h-0 opacity-0'
                   }`}
                 >
                   <div
-                    className="prose prose-gray max-w-none text-gray-700 py-4"
+                    className="prose prose-gray max-w-none text-gray-600 space-y-4 pb-4 text-sm"
                     dangerouslySetInnerHTML={{
-                      __html: section.description || '',
+                      __html: SsubSection.description || '',
                     }}
                   />
                 </div>

@@ -67,32 +67,36 @@ const ProductPage = async ({ searchParams }: PageProps) => {
   // console.log({ media: data.media });
 
   // Separate sections by type
-  const instructorSections = data.sections.filter(
+  const instructorSection = data.sections.filter(
     (section: { type: string }) => section.type === 'instructors'
   );
 
-  const featureSections = data.sections.filter(
+  const featureSection = data.sections.filter(
     (section: { type: string }) => section.type === 'features'
   );
 
-  const contentPreview = data.sections.filter(
+  const contentPreviewSection = data.sections.filter(
     (section: { type: string }) => section.type === 'content_preview'
   );
 
   // console.log({ featureSections });
 
-  const pointerSections = data.sections.filter(
+  const pointerSection = data.sections.filter(
     (section: { type: string }) => section.type === 'pointers'
   );
 
   // console.log({ pointerSections });
 
-  const pdfSections = data.sections.filter(
+  const pdfSection = data.sections.filter(
     (section: { type: string }) => section.type === 'group_join_engagement'
   );
 
-  const aboutSections = data.sections.filter(
+  const aboutSection = data.sections.filter(
     (section: { type: string }) => section.type === 'about'
+  );
+
+  const exclusiveFeatureSection = data.sections.filter(
+    (section: { type: string }) => section.type === 'feature_explanations'
   );
 
   return (
@@ -100,12 +104,12 @@ const ProductPage = async ({ searchParams }: PageProps) => {
       <HeroSection data={data} />
       <div className="max-w-7xl mx-auto lg:grid lg:grid-cols-3 lg:gap-x-8">
         <div className="px-4 sm:px-6 lg:px-8 py-8 lg:col-span-2 space-y-8">
-          <CourseInstructor instructorSections={instructorSections} />
-          <CourseFeatures featureSections={featureSections} />
-          <FreePDFSection pdfSections={pdfSections} />
-          <WhatYouWillLearn pointerSections={pointerSections} />
-          <ContentPreview contentPreview={contentPreview} />
-          <CourseDetails aboutSections={aboutSections} />
+          <CourseInstructor instructorSection={instructorSection} />
+          <CourseFeatures featureSection={featureSection} />
+          <FreePDFSection pdfSection={pdfSection} />
+          <WhatYouWillLearn pointerSection={pointerSection} />
+          <ContentPreview contentPreviewSection={contentPreviewSection} />
+          <CourseDetails aboutSection={aboutSection} />
         </div>
         <div className="mt-8 lg:-mt-64 lg:col-span-1">
           <div className="sticky top-24 space-y-8">

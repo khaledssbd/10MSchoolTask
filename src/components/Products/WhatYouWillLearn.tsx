@@ -1,19 +1,19 @@
 import { Section } from '@/types';
 
 const WhatYouWillLearn = ({
-  pointerSections = [],
+  pointerSection = [],
 }: {
-  pointerSections: Section[];
+  pointerSection: Section[];
 }) => {
   return (
     <div className="p-6">
-      {pointerSections?.map(section => (
-        <div key={section.order_idx}>
+      {pointerSection?.map(subSection => (
+        <div key={subSection.order_idx}>
           <h2 className="text-xl font-bold text-gray-900 mb-6">
-            {section.name}
+            {subSection.name}
           </h2>
           <div className="bg-white rounded-md border border-gray-300 p-6 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
-            {section.values?.map(
+            {subSection.values?.map(
               (item: {
                 color: string;
                 icon: string;
