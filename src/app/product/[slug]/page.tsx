@@ -19,6 +19,8 @@ import WhatYouWillLearn from '@/components/Products/WhatYouWillLearn';
 import ContentPreview from '@/components/Products/ContentPreview';
 import Checklist from '@/components/Products/Checklist';
 import CourseDetails from '@/components/Products/CourseDetails';
+import ExclusiveFeatureSection from '@/components/Products/ExclusiveFeatureSection';
+import FreeItemsSection from '@/components/Products/FreeItemsSection';
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -62,7 +64,7 @@ const ProductPage = async ({ searchParams }: PageProps) => {
 
   const data = await getProductData(query.lang);
 
-  console.dir({ data }, { depth: 'infinity' });
+  // console.dir({ data }, { depth: 'infinity' });
 
   // console.log({ media: data.media });
 
@@ -98,6 +100,9 @@ const ProductPage = async ({ searchParams }: PageProps) => {
   const exclusiveFeatureSection = data.sections.filter(
     (section: { type: string }) => section.type === 'feature_explanations'
   );
+  const freeItemsSection = data.sections.filter(
+    (section: { type: string }) => section.type === 'free_items'
+  );
 
   return (
     <div className="bg-gray-100">
@@ -105,11 +110,22 @@ const ProductPage = async ({ searchParams }: PageProps) => {
       <div className="max-w-7xl mx-auto lg:grid lg:grid-cols-3 lg:gap-x-8">
         <div className="px-4 sm:px-6 lg:px-8 py-8 lg:col-span-2 space-y-8">
           <CourseInstructor instructorSection={instructorSection} />
+
           <CourseFeatures featureSection={featureSection} />
+
           <FreePDFSection pdfSection={pdfSection} />
+
           <WhatYouWillLearn pointerSection={pointerSection} />
+
           <ContentPreview contentPreviewSection={contentPreviewSection} />
+
           <CourseDetails aboutSection={aboutSection} />
+
+          <ExclusiveFeatureSection
+            exclusiveFeatureSection={exclusiveFeatureSection}
+          />
+
+          <FreeItemsSection freeItemsSection={freeItemsSection} />
         </div>
         <div className="mt-8 lg:-mt-64 lg:col-span-1">
           <div className="sticky top-24 space-y-8">
