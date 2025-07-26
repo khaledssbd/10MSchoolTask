@@ -1,7 +1,35 @@
 'use client';
 
 import { Section } from '@/types';
-import { ChevronDown, ChevronUp } from 'lucide-react';
+import {
+  BicepsFlexed,
+  Brain,
+  Calendar,
+  Check,
+  ChevronDown,
+  ChevronUp,
+  Circle,
+  CircleGauge,
+  ClipboardPen,
+  File,
+  FileText,
+  Focus,
+  Headset,
+  LayoutTemplate,
+  LibraryBig,
+  Lightbulb,
+  MessageSquareMore,
+  NotebookText,
+  Pen,
+  Pin,
+  Play,
+  Search,
+  Sheet,
+  ShieldQuestionMark,
+  Spade,
+  Timer,
+  Volume2,
+} from 'lucide-react';
 // import { PlayCircle, Lock } from 'lucide-react';
 
 import { useState } from 'react';
@@ -380,61 +408,61 @@ const courseData = [
 const getIcon = (type: any) => {
   switch (type) {
     case 'video':
-      return '▶️';
+      return Play;
     case 'pdf':
-      return '📄';
+      return FileText;
     case 'audio':
-      return '🎧';
+      return Headset;
     case 'text':
-      return '📝';
+      return ClipboardPen;
     case 'quiz':
-      return '❓';
+      return ShieldQuestionMark;
     case 'practice':
-      return '✍️';
+      return Pen;
     case 'solution':
-      return '✅';
+      return Check;
     case 'timer':
-      return '⏱️';
+      return Timer;
     case 'discussion':
-      return '💬';
+      return Volume2;
     case 'worksheet':
-      return '📃';
+      return NotebookText;
     case 'activity':
-      return '💡';
+      return Lightbulb;
     case 'correction':
-      return '✏️';
+      return Pen;
     case 'feedback':
-      return '📈';
+      return MessageSquareMore;
     case 'examples':
-      return '📚';
+      return LibraryBig;
     case 'templates':
-      return '📋';
+      return LayoutTemplate;
     case 'exercise':
-      return '💪';
+      return BicepsFlexed;
     case 'cards':
-      return '🎴';
+      return Spade;
     case 'debate':
-      return '⚖️';
+      return CircleGauge;
     case 'sheet':
-      return '📝';
+      return Sheet;
     case 'brainstorming':
-      return '🧠';
+      return Brain;
     case 'date':
-      return '🗓️';
+      return Calendar;
     case 'topic':
-      return '📌';
+      return Pin;
     case 'focus':
-      return '🎯';
+      return Focus;
     case 'review':
-      return '🔍';
+      return Search;
     case 'doc':
-      return '📄';
+      return File;
     default:
-      return '●';
+      return Circle;
   }
 };
 
-type ToggleType = {
+export type ToggleType = {
   [key: string]: boolean;
 };
 
@@ -455,7 +483,7 @@ const ContentPreview = ({
     }));
   };
 
-  const visibleSections = showAllModules ? courseData : [courseData[0]];
+  const visibleSections = showAllModules ? courseData : courseData.slice(0, 5);
 
   return (
     <div className="p-6">
@@ -515,48 +543,60 @@ const ContentPreview = ({
                   }`}
                 >
                   <div className="p-4 pt-2">
-                    {section.items.map((item, index) => (
-                      <div key={index}>
-                        <div
-                          className={`flex items-center py-2 text-gray-600 ${
-                            'free' in item && item.free === false
-                              ? 'text-gray-400'
-                              : ''
-                          }`}
-                        >
-                          <span
-                            className={`mr-2 text-blue-600 text-lg ${
+                    {section.items.map((item, index) => {
+                      const MainItemIcon = getIcon(item.type);
+
+                      return (
+                        <div key={index}>
+                          <div
+                            className={`flex items-center py-2 text-gray-600 ${
                               'free' in item && item.free === false
-                                ? 'text-gray-500'
+                                ? 'text-gray-400'
                                 : ''
                             }`}
                           >
-                            {getIcon(item.type)}
-                          </span>
-                          <span>{item.title}</span>
-                          {'free' in item && item.free && (
-                            <span className="ml-auto text-green-500 font-bold text-sm">
-                              ফ্রি দেখুন
-                            </span>
+                            <MainItemIcon
+                              className={`w-5 h-5 mr-2 rounded-full p-1 text-white fill-white ${
+                                'free' in item && item.free === false
+                                  ? 'bg-gray-400'
+                                  : 'bg-green-600'
+                              }`}
+                            />
+
+                            <span>{item.title}</span>
+
+                            {'free' in item && item.free && (
+                              <span className="ml-auto text-green-500 font-bold text-sm">
+                                ফ্রি দেখুন
+                              </span>
+                            )}
+                          </div>
+                          {'subItems' in item && item.subItems && (
+                            <div className="ml-6 border-l border-gray-200 pl-4 py-1">
+                              {item.subItems.map((subItem, subIndex) => {
+                                const SubItemIcon = getIcon(subItem.type);
+
+                                return (
+                                  <div
+                                    key={subIndex}
+                                    className="flex items-center py-1 text-gray-500 text-sm"
+                                  >
+                                    <SubItemIcon
+                                      className={`w-5 h-5 mr-2 ${
+                                        'free' in item && item.free === false
+                                          ? 'text-gray-400'
+                                          : 'text-blue-600'
+                                      }`}
+                                    />
+                                    <span>{subItem.title}</span>
+                                  </div>
+                                );
+                              })}
+                            </div>
                           )}
                         </div>
-                        {'subItems' in item && item.subItems && (
-                          <div className="ml-6 border-l border-gray-200 pl-4 py-1">
-                            {item.subItems.map((subItem, subIndex) => (
-                              <div
-                                key={subIndex}
-                                className="flex items-center py-1 text-gray-500 text-sm"
-                              >
-                                <span className="mr-2 text-blue-500 text-base">
-                                  {getIcon(subItem.type)}
-                                </span>
-                                <span>{subItem.title}</span>
-                              </div>
-                            ))}
-                          </div>
-                        )}
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 </div>
               </div>
