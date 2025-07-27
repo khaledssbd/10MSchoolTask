@@ -32,16 +32,20 @@ const FaqSection = ({ faqSection = [] }: { faqSection: Section[] }) => {
             {subSection.name}
           </h2>
           <div className="relative bg-white rounded-md border border-gray-300 p-6 space-y-3">
-            {visibleSections?.map(SsubSection => (
+            {visibleSections?.map((SsubSection, sectionIndex) => (
               <div
                 key={SsubSection.id}
-                className="border-b border-dashed border-gray-300 last:border-b-0"
+                className={`border-b border-dashed border-gray-300 ${
+                  sectionIndex === visibleSections.length - 1
+                    ? 'border-b-0'
+                    : ''
+                }`}
               >
                 <div
-                  className="flex justify-between items-center py-4 bg-gray-50 hover:bg-gray-100 cursor-pointer font-semibold text-gray-700"
+                  className="flex justify-between items-center py-4 cursor-pointer font-semibold text-gray-700"
                   onClick={() => toggleSection(SsubSection.id)}
                 >
-                  <h3 className="prose prose-gray max-w-none text-gray-700">
+                  <h3 className="prose prose-gray max-w-none text-gray-800 text-sm">
                     {SsubSection.question}
                   </h3>
 
@@ -61,7 +65,7 @@ const FaqSection = ({ faqSection = [] }: { faqSection: Section[] }) => {
                   }`}
                 >
                   <div
-                    className="prose prose-gray max-w-none text-gray-600 space-y-4 pb-4 text-sm"
+                    className="prose prose-gray max-w-none text-gray-600 space-y-4 pt-2 pb-4 text-sm"
                     dangerouslySetInnerHTML={{
                       __html: SsubSection.answer || '',
                     }}

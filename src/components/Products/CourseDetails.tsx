@@ -54,7 +54,7 @@ const CourseDetails = ({ aboutSection = [] }: { aboutSection: Section[] }) => {
                   onClick={() => toggleSection(SsubSection.id)}
                 >
                   <div
-                    className="prose prose-gray max-w-none text-gray-700"
+                    className="prose prose-gray max-w-none text-gray-800 text-sm"
                     dangerouslySetInnerHTML={{
                       __html: SsubSection.title || '',
                     }}
@@ -76,7 +76,7 @@ const CourseDetails = ({ aboutSection = [] }: { aboutSection: Section[] }) => {
                   }`}
                 >
                   <div
-                    className="prose prose-gray max-w-none text-gray-600 space-y-4 pb-4 text-sm"
+                    className="prose prose-gray max-w-none text-gray-600 space-y-4 pb-4 text-base font-light"
                     dangerouslySetInnerHTML={{
                       __html: SsubSection.description || '',
                     }}

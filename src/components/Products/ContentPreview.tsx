@@ -513,10 +513,14 @@ const ContentPreview = ({
                 </button>
               </div>
             ))} */}
-            {visibleSections.map(vSubSection => (
+            {visibleSections.map((vSubSection, sectionIndex) => (
               <div
                 key={vSubSection.id}
-                className="border-b border-dashed border-gray-300 last:border-b-0"
+                className={`border-b border-dashed border-gray-300 ${
+                  sectionIndex === visibleSections.length - 1
+                    ? 'border-b-0'
+                    : ''
+                }`}
               >
                 <div
                   className="flex justify-between items-center py-4 cursor-pointer font-semibold text-gray-700"

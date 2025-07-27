@@ -80,6 +80,9 @@ const MoreCoursesForYou = ({ lang }: { lang: string | undefined }) => {
           ]}
           className="w-full"
         >
+          {/* <CarouselPrevious className="absolute -left-6 top-1/2 z-10 bg-white/40 rounded-full p-2 hover:bg-white transition-colors border border-gray-200 text-black" /> */}
+          <CarouselNext className="absolute right-4 -top-8 z-10 bg-white/40 rounded-full p-2 hover:bg-white transition-colors border border-gray-200 text-black" />
+
           <CarouselContent className="-ml-4">
             {moreCourses.map((course, index) => (
               <CarouselItem
@@ -92,23 +95,22 @@ const MoreCoursesForYou = ({ lang }: { lang: string | undefined }) => {
                   rel="noopener noreferrer"
                   className="block h-full"
                 >
-                  <div className="bg-white rounded-lg border border-gray-200 shadow-sm overflow-hidden transform transition-transform duration-200 hover:scale-[1.02] hover:shadow-md">
+                  <div className="bg-white rounded-lg border border-gray-300 hover:border-green-500 overflow-hidden transform transition-transform duration-200  h-full flex flex-col">
                     <div className="relative w-full aspect-video">
                       <Image
                         src={course.thumb}
                         alt={course.title}
-                        layout="fill"
-                        objectFit="cover"
-                        className="rounded-t-lg"
+                        width={500}
+                        height={500}
+                        className="object-cover rounded-t-lg"
                       />
                     </div>
-
-                    <div className="p-4 flex flex-col justify-between h-auto">
-                      <div className="flex-grow">
-                        <h3 className="text-lg font-semibold text-gray-800 mb-2 line-clamp-2">
+                    <div className="p-4 flex flex-col flex-1">
+                      <div className="flex-grow pb-3">
+                        <h3 className="text-lg font-semibold text-gray-800 line-clamp-2">
                           {course.title}
                         </h3>
-                        <p className="text-sm text-gray-600 line-clamp-1">
+                        <p className="text-sm text-gray-500 line-clamp-1">
                           {course.instructor}
                         </p>
                       </div>
@@ -130,8 +132,6 @@ const MoreCoursesForYou = ({ lang }: { lang: string | undefined }) => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="absolute -left-6 top-1/2 -translate-y-1/2 z-10 bg-white/80 rounded-full p-2 shadow-md hover:bg-white transition-colors border border-gray-200" />
-          <CarouselNext className="absolute -right-6 top-1/2 -translate-y-1/2 z-10 bg-white/80 rounded-full p-2 shadow-md hover:bg-white transition-colors border border-gray-200" />
         </Carousel>
       </div>
     </div>

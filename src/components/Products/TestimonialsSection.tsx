@@ -175,8 +175,8 @@ const TestimonialsSection = ({
                 );
               })}
             </CarouselContent>
-            <CarouselPrevious className="absolute -left-6 top-1/2 -translate-y-1/2 z-10 bg-white/80 rounded-full p-2 shadow-md" />
-            <CarouselNext className="absolute -right-6 top-1/2 -translate-y-1/2 z-10 bg-white/80 rounded-full p-2 shadow-md" />
+            <CarouselPrevious className="absolute -left-6 top-1/2 -translate-y-1/2 z-10 bg-gray-600/60 hover:bg-white rounded-full p-2 shadow-md text-white hover:text-black" />
+            <CarouselNext className="absolute -right-6 top-1/2 -translate-y-1/2 z-10 bg-gray-600/60 hover:bg-white rounded-full p-2 shadow-md text-white hover:text-black" />
           </Carousel>
         </div>
       ))}

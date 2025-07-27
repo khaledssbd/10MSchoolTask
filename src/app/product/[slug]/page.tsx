@@ -27,13 +27,12 @@ import HowToPaySection from '@/components/Products/HowToPaySection';
 import FaqSection from '@/components/Products/FaqSection';
 import AnyMoreQuestionSection from '@/components/Products/AnyMoreQuestionSection';
 import MoreCoursesForYou from '@/components/Products/MoreCoursesForYou';
+import AdvertiseBanner from '@/components/Products/AdvertiseBanner';
+import SocialSection from '@/components/Products/SocialSection';
 
 type PageProps = {
-  params: Promise<{ slug: string }>;
-  searchParams: Promise<{ lang?: 'en' | 'bn' }>;
+  searchParams: Promise<{ lang?: 'en' | 'bn'; banner?: 'true' | 'false' }>;
 };
-
-// type SearchParams = Promise<{ lang?: 'en' | 'bn' }>;
 
 export async function generateMetadata({
   searchParams,
@@ -128,7 +127,9 @@ const ProductPage = async ({ searchParams }: PageProps) => {
   );
 
   return (
-    <div className="bg-gray-100">
+    <div className="bg-gray-100 relative">
+      <AdvertiseBanner banner={query.banner} />
+
       <HeroSection data={data} />
       <div className="max-w-7xl mx-auto lg:grid lg:grid-cols-3 lg:gap-x-8">
         <div className="px-4 sm:px-6 lg:px-8 py-8 lg:col-span-2 space-y-8">
@@ -169,6 +170,8 @@ const ProductPage = async ({ searchParams }: PageProps) => {
           <MoreCoursesForYou lang={query.lang} />
         </div>
       </div>
+
+      <SocialSection/>
     </div>
   );
 };
