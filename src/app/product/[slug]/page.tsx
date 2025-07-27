@@ -28,7 +28,6 @@ import FaqSection from '@/components/Products/FaqSection';
 import AnyMoreQuestionSection from '@/components/Products/AnyMoreQuestionSection';
 import MoreCoursesForYou from '@/components/Products/MoreCoursesForYou';
 import AdvertiseBanner from '@/components/Products/AdvertiseBanner';
-import SocialSection from '@/components/Products/SocialSection';
 
 type PageProps = {
   searchParams: Promise<{ lang?: 'en' | 'bn'; banner?: 'true' | 'false' }>;
@@ -170,8 +169,6 @@ const ProductPage = async ({ searchParams }: PageProps) => {
           <MoreCoursesForYou lang={query.lang} />
         </div>
       </div>
-
-      <SocialSection/>
     </div>
   );
 };
