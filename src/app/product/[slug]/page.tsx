@@ -21,6 +21,7 @@ import Checklist from '@/components/Products/Checklist';
 import CourseDetails from '@/components/Products/CourseDetails';
 import ExclusiveFeatureSection from '@/components/Products/ExclusiveFeatureSection';
 import FreeItemsSection from '@/components/Products/FreeItemsSection';
+import TestimonialsSection from '@/components/Products/TestimonialsSection';
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -105,7 +106,6 @@ const ProductPage = async ({ searchParams }: PageProps) => {
     (section: { type: string }) => section.type === 'free_items'
   );
 
-
   const testimonialsSection = data.sections.filter(
     (section: { type: string }) => section.type === 'testimonials'
   );
@@ -115,7 +115,7 @@ const ProductPage = async ({ searchParams }: PageProps) => {
       <HeroSection data={data} />
       <div className="max-w-7xl mx-auto lg:grid lg:grid-cols-3 lg:gap-x-8">
         <div className="px-4 sm:px-6 lg:px-8 py-8 lg:col-span-2 space-y-8">
-          <CourseInstructor instructorSection={instructorSection} />
+          {/* <CourseInstructor instructorSection={instructorSection} />
 
           <CourseFeatures featureSection={featureSection} />
 
@@ -131,7 +131,9 @@ const ProductPage = async ({ searchParams }: PageProps) => {
             exclusiveFeatureSection={exclusiveFeatureSection}
           />
 
-          <FreeItemsSection freeItemsSection={freeItemsSection} />
+          <FreeItemsSection freeItemsSection={freeItemsSection} /> */}
+
+          <TestimonialsSection testimonials={testimonialsSection} />
         </div>
         <div className="mt-8 lg:-mt-64 lg:col-span-1">
           <div className="sticky top-24 space-y-8">
