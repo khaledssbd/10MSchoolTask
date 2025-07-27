@@ -50,7 +50,7 @@ const CourseDetails = ({ aboutSection = [] }: { aboutSection: Section[] }) => {
                 className="border-b border-dashed border-gray-300 last:border-b-0"
               >
                 <div
-                  className="flex justify-between items-center py-4 bg-gray-50 hover:bg-gray-100 cursor-pointer font-semibold text-gray-700"
+                  className="flex justify-between items-center py-4 cursor-pointer font-semibold text-gray-700"
                   onClick={() => toggleSection(SsubSection.id)}
                 >
                   <div

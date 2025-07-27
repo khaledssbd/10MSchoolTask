@@ -26,6 +26,7 @@ import RequirementsSection from '@/components/Products/RequirementsSection';
 import HowToPaySection from '@/components/Products/HowToPaySection';
 import FaqSection from '@/components/Products/FaqSection';
 import AnyMoreQuestionSection from '@/components/Products/AnyMoreQuestionSection';
+import MoreCoursesForYou from '@/components/Products/MoreCoursesForYou';
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -157,12 +158,15 @@ const ProductPage = async ({ searchParams }: PageProps) => {
 
           <FaqSection faqSection={faqSection} />
 
-          <AnyMoreQuestionSection />
+          <AnyMoreQuestionSection lang={query.lang} />
         </div>
         <div className="mt-8 lg:-mt-64 lg:col-span-1">
           <div className="sticky top-24 space-y-8">
             <Checklist data={data} />
           </div>
+        </div>
+        <div className="col-span-3">
+          <MoreCoursesForYou lang={query.lang} />
         </div>
       </div>
     </div>

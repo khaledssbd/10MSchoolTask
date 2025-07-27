@@ -1,11 +1,11 @@
 import { PhoneCall } from 'lucide-react';
 
-const AnyMoreQuestionSection = () => {
+const AnyMoreQuestionSection = ({ lang }: { lang: string | undefined }) => {
   return (
     <div className="p-6">
       <div>
         <h2 className="text-xl font-bold text-gray-900 mb-6">
-          আরও কোন জিজ্ঞাসা আছে?
+          {lang === 'bn' ? ' আরও কোন জিজ্ঞাসা আছে?' : 'Any more questions?'}
         </h2>
 
         <a

@@ -2,7 +2,7 @@
 
 import { Section } from '@/types';
 import { Play } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import YouTube from 'react-youtube';
 
 const HowToPaySection = ({
@@ -12,6 +12,7 @@ const HowToPaySection = ({
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const modalRef = useRef<HTMLDivElement>(null);
 
   const videoId = '5wfn60rmWX4';
 
@@ -27,6 +28,26 @@ const HowToPaySection = ({
   const handlePlayButtonClick = () => {
     setIsVideoPlaying(true);
   };
+
+  // Close modal when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        modalRef.current &&
+        !modalRef.current.contains(event.target as Node)
+      ) {
+        handleCloseModal();
+      }
+    };
+
+    if (isModalOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isModalOpen]);
 
   const opts = {
     height: '100%',
@@ -60,7 +81,10 @@ const HowToPaySection = ({
           {/* Modal */}
           {isModalOpen && (
             <div className="fixed inset-0 bg-black/30 flex items-center justify-center z-50 p-4">
-              <div className="bg-white rounded-lg p-6 w-full max-w-4xl relative">
+              <div
+                ref={modalRef}
+                className="bg-white rounded-lg p-6 w-full max-w-4xl relative"
+              >
                 <button
                   onClick={handleCloseModal}
                   className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl font-semibold"

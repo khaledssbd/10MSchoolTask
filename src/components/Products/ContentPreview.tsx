@@ -516,14 +516,10 @@ const ContentPreview = ({
             {visibleSections.map(vSubSection => (
               <div
                 key={vSubSection.id}
-                className="border-b border-gray-100 last:border-b-0"
+                className="border-b border-dashed border-gray-300 last:border-b-0"
               >
                 <div
-                  className={`flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 cursor-pointer font-semibold text-gray-700 ${
-                    expandedSections[vSubSection.id]
-                      ? 'border-b border-gray-200'
-                      : ''
-                  }`}
+                  className="flex justify-between items-center py-4 cursor-pointer font-semibold text-gray-700"
                   onClick={() => toggleSection(vSubSection.id)}
                 >
                   <span>{vSubSection.title}</span>
