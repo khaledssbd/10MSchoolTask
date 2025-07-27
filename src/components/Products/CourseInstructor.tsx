@@ -10,7 +10,7 @@ const CourseInstructor = ({
   // console.dir({ instructorSections }, { depth: 'infinity' });
 
   return (
-    <div className="p-6">
+    <div className="p-6" id="CourseInstructor">
       {instructorSection?.map(subSection => (
         <div key={subSection.order_idx}>
           <h2 className="text-xl font-bold text-gray-900 mb-6">

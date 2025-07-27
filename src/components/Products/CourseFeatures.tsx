@@ -9,7 +9,7 @@ const CourseFeatures = ({
   // console.dir({ featureSections }, { depth: 'infinity' });
 
   return (
-    <div className="p-6">
+    <div className="p-6" id="CourseFeatures">
       {featureSection?.map(subSection => (
         <div key={subSection.order_idx}>
           <h2 className="text-xl font-bold text-gray-900 mb-6">

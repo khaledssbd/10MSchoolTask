@@ -25,7 +25,7 @@ const FaqSection = ({ faqSection = [] }: { faqSection: Section[] }) => {
     : faqSection[0].values.slice(0, 5);
 
   return (
-    <div className="p-6">
+    <div className="p-6" id="FaqSection">
       {faqSection?.map(subSection => (
         <div key={subSection.order_idx}>
           <h2 className="text-xl font-bold text-gray-900 mb-6">

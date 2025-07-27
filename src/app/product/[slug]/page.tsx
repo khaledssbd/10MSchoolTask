@@ -63,6 +63,8 @@ export async function generateMetadata({
   }
 }
 
+import TopCarousel from '@/components/Products/TopCarousel';
+
 const ProductPage = async ({ searchParams }: PageProps) => {
   const query = await searchParams;
 
@@ -130,7 +132,10 @@ const ProductPage = async ({ searchParams }: PageProps) => {
       <AdvertiseBanner banner={query.banner} />
 
       <HeroSection data={data} />
-      <div className="max-w-7xl mx-auto lg:grid lg:grid-cols-3 lg:gap-x-8">
+
+      <TopCarousel />
+      
+      <div className="max-w-7xl mx-auto lg:grid lg:grid-cols-3 lg:gap-x-8 mt-12">
         <div className="px-4 sm:px-6 lg:px-8 py-8 lg:col-span-2 space-y-8">
           <CourseInstructor instructorSection={instructorSection} />
 

@@ -6,7 +6,7 @@ const WhatYouWillLearn = ({
   pointerSection: Section[];
 }) => {
   return (
-    <div className="p-6">
+    <div className="p-6" id="WhatYouWillLearn">
       {pointerSection?.map(subSection => (
         <div key={subSection.order_idx}>
           <h2 className="text-xl font-bold text-gray-900 mb-6">
