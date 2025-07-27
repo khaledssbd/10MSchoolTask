@@ -22,6 +22,10 @@ import CourseDetails from '@/components/Products/CourseDetails';
 import ExclusiveFeatureSection from '@/components/Products/ExclusiveFeatureSection';
 import FreeItemsSection from '@/components/Products/FreeItemsSection';
 import TestimonialsSection from '@/components/Products/TestimonialsSection';
+import RequirementsSection from '@/components/Products/RequirementsSection';
+import HowToPaySection from '@/components/Products/HowToPaySection';
+import FaqSection from '@/components/Products/FaqSection';
+import AnyMoreQuestionSection from '@/components/Products/AnyMoreQuestionSection';
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -110,12 +114,24 @@ const ProductPage = async ({ searchParams }: PageProps) => {
     (section: { type: string }) => section.type === 'testimonials'
   );
 
+  const requirementsSection = data.sections.filter(
+    (section: { type: string }) => section.type === 'requirements'
+  );
+
+  const howToPaySection = data.sections.filter(
+    (section: { type: string }) => section.type === 'how_to_pay'
+  );
+
+  const faqSection = data.sections.filter(
+    (section: { type: string }) => section.type === 'faq'
+  );
+
   return (
     <div className="bg-gray-100">
       <HeroSection data={data} />
       <div className="max-w-7xl mx-auto lg:grid lg:grid-cols-3 lg:gap-x-8">
         <div className="px-4 sm:px-6 lg:px-8 py-8 lg:col-span-2 space-y-8">
-          {/* <CourseInstructor instructorSection={instructorSection} />
+          <CourseInstructor instructorSection={instructorSection} />
 
           <CourseFeatures featureSection={featureSection} />
 
@@ -131,9 +147,17 @@ const ProductPage = async ({ searchParams }: PageProps) => {
             exclusiveFeatureSection={exclusiveFeatureSection}
           />
 
-          <FreeItemsSection freeItemsSection={freeItemsSection} /> */}
+          <FreeItemsSection freeItemsSection={freeItemsSection} />
 
           <TestimonialsSection testimonials={testimonialsSection} />
+
+          <RequirementsSection requirementsSection={requirementsSection} />
+
+          <HowToPaySection howToPaySection={howToPaySection} />
+
+          <FaqSection faqSection={faqSection} />
+
+          <AnyMoreQuestionSection />
         </div>
         <div className="mt-8 lg:-mt-64 lg:col-span-1">
           <div className="sticky top-24 space-y-8">
