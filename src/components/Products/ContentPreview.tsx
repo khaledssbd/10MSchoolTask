@@ -492,7 +492,7 @@ const ContentPreview = ({
           <h2 className="text-xl font-bold text-gray-900 mb-6">
             {subSection.name}
           </h2>
-          <div className="bg-white rounded-md border border-gray-300 p-6 space-y-3">
+          <div className="relative bg-white rounded-md border border-gray-300 p-6 space-y-3">
             {/* {section.values?.map(item => (
               <div
                 key={item.id}
@@ -603,7 +603,7 @@ const ContentPreview = ({
             ))}
 
             <button
-              className="block w-full py-4 text-center bg-gray-50 border-t border-gray-200 cursor-pointer text-gray-500 text-sm hover:bg-gray-100 transition-colors duration-200"
+              className="absolute -bottom-5 w-fit px-4 py-2 left-0 right-0 block mx-auto text-center bg-gray-50 rounded-full cursor-pointer text-gray-500 hover:text-black text-sm transition-colors duration-200"
               onClick={() => setShowAllModules(prev => !prev)}
             >
               {showAllModules ? (
