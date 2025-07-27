@@ -5,9 +5,13 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const TopCarousel = () => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false });
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: false,
+    align: 'start',
+  });
   const [prevBtnDisabled, setPrevBtnDisabled] = useState(true);
   const [nextBtnDisabled, setNextBtnDisabled] = useState(true);
+  const [activeCardId, setActiveCardId] = useState('');
 
   const scrollPrev = useCallback(
     () => emblaApi && emblaApi.scrollPrev(),
@@ -33,10 +37,11 @@ const TopCarousel = () => {
 
   const scrollToSection = (
     e: React.MouseEvent<HTMLElement, MouseEvent>,
-    sectionId: string | undefined
+    sectionId: string
   ) => {
     e.preventDefault();
-    const section = document.querySelector(sectionId!);
+    setActiveCardId(sectionId);
+    const section = document.querySelector(sectionId);
     if (section) {
       section.scrollIntoView({ behavior: 'smooth' });
     }
@@ -75,41 +80,49 @@ const TopCarousel = () => {
       title: 'সচরাচর জিজ্ঞাসা',
       id: '#FaqSection',
     },
-    ,
   ];
 
   return (
-    <div className="w-full max-w-3xl m-8 absolute left-42">
-      <div className="absolute -left-12 top-1/2 -translate-y-1/2 z-10">
-        <button
-          onClick={scrollPrev}
-          disabled={prevBtnDisabled}
-          className="bg-gray-500 hover:bg-white text-gray-800 font-bold p-2 rounded-full disabled:opacity-50 group"
-        >
-          <ChevronLeft className="text-white group-hover:text-black" />
-        </button>
-      </div>
-      <div className="overflow-hidden border-b border-gray-300" ref={emblaRef}>
-        <div className="flex">
-          {carouselItems.map((item, index) => (
-            <button
-              onClick={e => scrollToSection(e, item?.id)}
-              key={index}
-              className="flex-shrink-0 relative px-4 py-2 cursor-pointer"
-            >
-              <p className="text-center whitespace-nowrap">{item?.title}</p>
-            </button>
-          ))}
+    <div className="sticky top-16 border-t border-gray-300 z-20 bg-white py-2">
+      <div className="relative -left-48 max-w-3xl mx-auto">
+        <div className="absolute -left-10 top-1/2 -translate-y-1/2 z-10">
+          <button
+            onClick={scrollPrev}
+            disabled={prevBtnDisabled}
+            className="bg-gray-200 hover:bg-gray-300 text-gray-800 p-2 rounded-full disabled:opacity-50 group"
+          >
+            <ChevronLeft className="text-black" />
+          </button>
         </div>
-      </div>
-      <div className="absolute -right-8 top-1/2 -translate-y-1/2 z-10">
-        <button
-          onClick={scrollNext}
-          disabled={nextBtnDisabled}
-          className="bg-gray-500 hover:bg-white text-gray-800 font-bold p-2 rounded-full disabled:opacity-50 group"
+        <div
+          className="overflow-hidden border-b border-gray-300"
+          ref={emblaRef}
         >
-          <ChevronRight className="text-white group-hover:text-black" />
-        </button>
+          <div className="flex">
+            {carouselItems.map((item, index) => (
+              <button
+                onClick={e => scrollToSection(e, item.id)}
+                key={index}
+                className={`flex-shrink-0 relative px-4 py-2 cursor-pointer text-gray-600 hover:text-black focus:outline-none ${
+                  activeCardId === item.id
+                    ? 'text-green-500 border-b-2 border-green-500'
+                    : ''
+                }`}
+              >
+                <p className="text-center whitespace-nowrap">{item?.title}</p>
+              </button>
+            ))}
+          </div>
+        </div>
+        <div className="absolute -right-10 top-1/2 -translate-y-1/2 z-10">
+          <button
+            onClick={scrollNext}
+            disabled={nextBtnDisabled}
+            className="bg-gray-200 hover:bg-gray-300 text-gray-800 p-2 rounded-full disabled:opacity-50 group"
+          >
+            <ChevronRight className="text-black" />
+          </button>
+        </div>
       </div>
     </div>
   );

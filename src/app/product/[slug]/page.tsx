@@ -128,7 +128,7 @@ const ProductPage = async ({ searchParams }: PageProps) => {
   );
 
   return (
-    <div className="bg-gray-100 relative">
+    <div className="bg-white relative">
       <AdvertiseBanner banner={query.banner} />
 
       <HeroSection data={data} />
@@ -166,7 +166,7 @@ const ProductPage = async ({ searchParams }: PageProps) => {
           <AnyMoreQuestionSection lang={query.lang} />
         </div>
         <div className="mt-8 lg:-mt-64 lg:col-span-1">
-          <div className="sticky top-24 space-y-8">
+          <div className="sticky top-24 space-y-8 z-50">
             <Checklist data={data} />
           </div>
         </div>
