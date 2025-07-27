@@ -1,124 +1,196 @@
-import { Facebook, Instagram, X, Linkedin, Youtube } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const Footer = () => {
-  const socialLinks = [
+  const companyLinks = [
     {
-      href: 'https://cdn.10minuteschool.com/images/facebook_1695730910971.png',
-      icon: Facebook,
+      href: 'https://app.10minuteschool.com/careers',
+      text: 'ক্যারিয়ার / নিয়োগ বিজ্ঞপ্তি',
     },
     {
-      href: 'https://cdn.10minuteschool.com/images/instagram_1695731442397.png',
-      icon: Instagram,
+      href: 'https://docs.google.com/forms/d/e/1FAIpQLScWh9jjyWnUKdDKET1-LHvdTxuU6-ssd0GLTI-0JlQ2MH6RzA/viewform',
+      text: 'শিক্ষক হিসেবে যোগ দিন',
     },
     {
-      href: 'https://cdn.10minuteschool.com/images/linkedin_1695731507042.pngo',
-      icon: Linkedin,
+      href: 'https://affiliation.10minuteschool.com',
+      text: 'অ্যাফিলিয়েট হিসেবে যোগ দিন',
     },
     {
-      href: 'https://cdn.10minuteschool.com/images/youtube_1695731538726.png',
-      icon: Youtube,
+      href: 'https://app.10minuteschool.com/privacy-policy',
+      text: 'প্রাইভেসি পলিসি',
     },
     {
-      href: 'https://cdn.10minuteschool.com/images/Tiktok_1695731564895.png',
-      icon: Linkedin,
+      href: 'https://app.10minuteschool.com/refund-policy',
+      text: 'রিফান্ড পলিসি',
+    },
+    {
+      href: 'https://app.10minuteschool.com/terms-and-conditions',
+      text: 'ব্যবহারকারীর শর্তাবলি',
     },
   ];
+
+  const otherLinks = [
+    {
+      href: 'https://blog.10minuteschool.com',
+      text: 'ব্লগ',
+    },
+    { href: 'https://10minuteschool.com/store/all', text: 'বুক স্টোর' },
+    { href: 'https://10minuteschool.com/content', text: 'ফ্রি নোটস ও স্লাইড' },
+    {
+      href: 'https://10minuteschool.com/jobs-prep',
+      text: 'চাকরি প্রস্তুতি কোর্সসমূহ',
+    },
+    {
+      href: 'https://10minuteschool.com/certificate',
+      text: 'সার্টিফিকেট ভেরিফাই করুন',
+    },
+    { href: 'https://10minuteschool.com/resource', text: 'ফ্রি ডাউনলোড' },
+  ];
+
+  const socialIcons: { href: string; icon: string }[] = [
+    {
+      href: 'https://www.facebook.com/10minuteschool',
+      icon: 'https://cdn.10minuteschool.com/images/facebook_1695730910971.png',
+    },
+    {
+      href: 'https://www.instagram.com/10ms_insta',
+      icon: 'https://cdn.10minuteschool.com/images/instagram_1695731442397.png',
+    },
+    {
+      href: 'https://www.linkedin.com/company/10ms',
+      icon: 'https://cdn.10minuteschool.com/images/linkedin_1695731507042.png',
+    },
+    {
+      href: 'https://www.youtube.com/channel/UCL89KKkLs0tZKld-iIS3NGw',
+      icon: 'https://cdn.10minuteschool.com/images/youtube_1695731538726.png',
+    },
+    {
+      href: 'https://www.tiktok.com/@10minuteschool?lang=en',
+      icon: 'https://cdn.10minuteschool.com/images/Tiktok_1695731564895.png',
+    },
+  ];
+
   return (
-    <footer className="bg-white text-white mt-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div>
+    <footer className="bg-white text-gray-800 pt-12 pb-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="flex flex-col items-start">
             <Image
-              src="/10mslogo-svg.svg?height=32&width=120&text=10+Minute+School"
+              src="/10mslogo-svg.svg"
               alt="10 Minute School"
-              className="h-8 mb-4"
-              width={400}
-              height={400}
+              width={150}
+              height={40}
             />
-            <p className="text-gray-400 text-sm">
-              বাংলাদেশের সবচেয়ে বড় অনলাইন শিক্ষা প্ল্যাটফর্ম
+            <p className="text-sm mt-4 mb-2">
+              ডাউনলোড করুন আমাদের মোবাইল অ্যাপ
             </p>
+            <div className="flex gap-2">
+              <Link href="#">
+                <Image
+                  src="https://cdn.10minuteschool.com/images/google-play-icon_1695731678094.png"
+                  alt="Google Play"
+                  width={135}
+                  height={40}
+                />
+              </Link>
+              <Link href="#">
+                <Image
+                  src="https://cdn.10minuteschool.com/images/ios-store-icon_1695731704002.png"
+                  alt="App Store"
+                  width={120}
+                  height={40}
+                />
+              </Link>
+            </div>
           </div>
+
           <div>
-            <h4 className="font-semibold mb-4">কোর্স</h4>
-            <ul className="space-y-2 text-sm text-gray-400">
-              <li>
-                <a href="#" className="hover:text-white">
-                  একাডেমিক
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white">
-                  স্কিলস
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white">
-                  ভাষা শেখা
-                </a>
-              </li>
+            <h4 className="font-bold text-lg mb-4">কোম্পানি</h4>
+            <ul className="space-y-2">
+              {companyLinks.map((link, index) => (
+                <li key={index}>
+                  <Link
+                    href={link.href}
+                    className="text-gray-500 text-sm hover:text-green-500"
+                  >
+                    {link.text}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
+
           <div>
-            <h4 className="font-semibold mb-4">সাপোর্ট</h4>
-            <ul className="space-y-2 text-sm text-gray-400">
-              <li>
-                <a href="#" className="hover:text-white">
-                  যোগাযোগ
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white">
-                  সাহায্য
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white">
-                  FAQ
-                </a>
-              </li>
+            <h4 className="font-bold text-lg mb-4">অন্যান্য</h4>
+            <ul className="space-y-2">
+              {otherLinks.map((link, index) => (
+                <li key={index}>
+                  <Link
+                    href={link.href}
+                    className="text-gray-500 text-sm hover:text-green-500"
+                  >
+                    {link.text}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
+
           <div>
-            <h4 className="font-semibold mb-4">ফলো করুন</h4>
-            <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-white">
-                <span className="sr-only">Facebook</span>
-                <svg
-                  className="w-5 h-5"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
+            <h4 className="font-bold text-lg mb-4">আমাদের যোগাযোগ মাধ্যম</h4>
+            <div className="space-y-4 text-sm">
+              <p>
+                কল করুন:{' '}
+                <a href="tel:16910" className="text-green-500 font-bold">
+                  16910
+                </a>{' '}
+                (24x7)
+              </p>
+              <p>
+                হোয়াটসঅ্যাপ:{' '}
+                <a
+                  href="https://wa.me/8801896016252"
+                  className="text-green-500 font-bold"
                 >
-                  <path
-                    fillRule="evenodd"
-                    d="M20 10C20 4.477 15.523 0 10 0S0 4.477 0 10c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V10h2.54V7.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V10h2.773l-.443 2.89h-2.33v6.988C16.343 19.128 20 14.991 20 10z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white">
-                <span className="sr-only">YouTube</span>
-                <svg
-                  className="w-5 h-5"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
+                  +8801896016252
+                </a>{' '}
+                (24x7)
+              </p>
+              <p>
+                দেশের বাহির থেকে:{' '}
+                <a
+                  href="tel:+8809610916910"
+                  className="text-green-500 font-bold"
                 >
-                  <path
-                    fillRule="evenodd"
-                    d="M2 10C2 5.58172 5.58172 2 10 2C14.4183 2 18 5.58172 18 10C18 14.4183 14.4183 18 10 18C5.58172 18 2 14.4183 2 10Z"
-                    clipRule="evenodd"
+                  +880 9610916910
+                </a>
+              </p>
+              <p>
+                ইমেইল:{' '}
+                <a
+                  href="mailto:support@10minuteschool.com"
+                  className="text-green-500 font-bold"
+                >
+                  support@10minuteschool.com
+                </a>
+              </p>
+            </div>
+            <div className="flex gap-2 mt-4">
+              {socialIcons.map((social, index) => (
+                <Link href={social.href} key={index} className="w-16 h-16">
+                  <Image
+                    src={social.icon}
+                    alt="Social Icon"
+                    width={30}
+                    height={30}
                   />
-                </svg>
-              </a>
+                </Link>
+              ))}
             </div>
           </div>
         </div>
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
-          <p>
-            &copy; {new Date().getFullYear()} 10 Minute School. All rights
-            reserved.
-          </p>
+        <div className="text-center text-sm text-gray-500 pt-6">
+          <p>স্বত্ব © ২০১৫ - ২০২৫ টেন মিনিট স্কুল কর্তৃক সর্বস্বত্ব সংরক্ষিত</p>
         </div>
       </div>
     </footer>
