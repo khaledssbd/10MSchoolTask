@@ -64,7 +64,7 @@ const MoreCoursesForYou = ({ lang }: { lang: string | undefined }) => {
   return (
     <div className="p-6">
       <div>
-        <h2 className="text-xl font-bold text-gray-900 mb-6">
+        <h2 className="text-xl font-bold text-gray-900 mb-16">
           {lang === 'bn' ? 'আপনার জন্য আরও কিছু কোর্স' : 'More courses for you'}
         </h2>
 

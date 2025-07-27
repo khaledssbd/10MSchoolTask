@@ -165,7 +165,7 @@ const ProductPage = async ({ searchParams }: PageProps) => {
             <Checklist data={data} />
           </div>
         </div>
-        <div className="col-span-3">
+        <div className="lg:ml-8 col-span-3">
           <MoreCoursesForYou lang={query.lang} />
         </div>
       </div>
