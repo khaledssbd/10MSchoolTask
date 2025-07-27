@@ -80,8 +80,13 @@ const TestimonialsSection = ({
 
                 return (
                   <CarouselItem key={index} className="md:basis-1/2">
-                    <div className="p-4">
-                      <div className="bg-white rounded-lg border border-gray-500/40 overflow-hidden p-5">
+                    <div className="py-4 px-2">
+                      <div className="bg-white rounded-lg border border-gray-500/40 p-5 relative">
+                        {/* Quotation mark at the top */}
+                        <div className="absolute -top-4 left-6 text-4xl text-red-700 pt-3 rounded-full bg-red-200 w-10 h-10 flex items-center justify-center">
+                          ❝
+                        </div>
+
                         <div className="relative">
                           {isPlaying && testimonial.thumb ? (
                             <div className="aspect-video">
@@ -170,8 +175,8 @@ const TestimonialsSection = ({
                 );
               })}
             </CarouselContent>
-            <CarouselPrevious className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 rounded-full p-2 shadow-md" />
-            <CarouselNext className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 rounded-full p-2 shadow-md" />
+            <CarouselPrevious className="absolute -left-6 top-1/2 -translate-y-1/2 z-10 bg-white/80 rounded-full p-2 shadow-md" />
+            <CarouselNext className="absolute -right-6 top-1/2 -translate-y-1/2 z-10 bg-white/80 rounded-full p-2 shadow-md" />
           </Carousel>
         </div>
       ))}
