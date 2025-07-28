@@ -20,7 +20,7 @@ const FreeItemsSection = ({
             {/* Inner container with red gradient and border effect */}
             {/* <div className="relative py-5 px-8 rounded-2xl border-4 border-gray-500/30"> */}
 
-            <div className="relative bg-gradient-to-br from-red-600 via-red-500 to-red-800 py-5 px-8 rounded-2xl border-2 border-red-400/30">
+            <div className="relative bg-gradient-to-br from-red-600 via-red-500 to-red-800 py-5 px-8 rounded-2xl border-2 border-gray-400/70">
               {/* Additional inner glow effect */}
               <div className="absolute inset-0 bg-gradient-to-tr from-black via-red-700/90 to-red-400/70 rounded-xl"></div>
 
