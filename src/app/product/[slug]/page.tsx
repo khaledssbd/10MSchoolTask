@@ -1,15 +1,5 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-
-import {
-  Star,
-  Play,
-  Download,
-  Users,
-  Clock,
-  Award,
-  BookOpen,
-} from 'lucide-react';
 import { getProductData } from '@/services/Product';
 import HeroSection from '@/components/Products/HeroSection';
 import CourseInstructor from '@/components/Products/CourseInstructor';
@@ -28,6 +18,7 @@ import FaqSection from '@/components/Products/FaqSection';
 import AnyMoreQuestionSection from '@/components/Products/AnyMoreQuestionSection';
 import MoreCoursesForYou from '@/components/Products/MoreCoursesForYou';
 import AdvertiseBanner from '@/components/Products/AdvertiseBanner';
+import TopCarousel from '@/components/Products/TopCarousel';
 
 type PageProps = {
   searchParams: Promise<{ lang?: 'en' | 'bn'; banner?: 'true' | 'false' }>;
@@ -37,6 +28,10 @@ export async function generateMetadata({
   searchParams,
 }: PageProps): Promise<Metadata> {
   const query = await searchParams;
+
+  if (query.lang && query.lang !== 'en' && query.lang !== 'bn') {
+    query.lang = 'en';
+  }
 
   try {
     const data = await getProductData(query.lang);
@@ -63,10 +58,12 @@ export async function generateMetadata({
   }
 }
 
-import TopCarousel from '@/components/Products/TopCarousel';
-
 const ProductPage = async ({ searchParams }: PageProps) => {
   const query = await searchParams;
+
+  if (query.lang && query.lang !== 'en' && query.lang !== 'bn') {
+    query.lang = 'en';
+  }
 
   const data = await getProductData(query.lang);
 
@@ -133,7 +130,7 @@ const ProductPage = async ({ searchParams }: PageProps) => {
 
       <HeroSection data={data} />
 
-      <div className='hidden md:flex'>
+      <div className="hidden md:block">
         <TopCarousel />
       </div>
 
