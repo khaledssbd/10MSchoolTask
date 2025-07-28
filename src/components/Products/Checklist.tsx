@@ -60,7 +60,7 @@ const Checklist = ({ data }: { data: CourseData }) => {
     <div className="bg-white border border-gray-300 p-1">
       {galleryItems.length > 0 && (
         <div className="relative mb-6">
-          <div className="relative aspect-video rounded-lg overflow-hidden">
+          <div className="relative aspect-video overflow-hidden">
             {playingVideoId && currentItem.resource_type === 'video' ? (
               <YouTube
                 videoId={playingVideoId}
