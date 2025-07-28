@@ -133,8 +133,10 @@ const ProductPage = async ({ searchParams }: PageProps) => {
 
       <HeroSection data={data} />
 
-      <TopCarousel />
-      
+      <div className='hidden md:flex'>
+        <TopCarousel />
+      </div>
+
       <div className="max-w-7xl mx-auto lg:grid lg:grid-cols-3 lg:gap-x-8 mt-12">
         <div className="px-4 sm:px-6 lg:px-8 py-8 lg:col-span-2 space-y-8">
           <CourseInstructor instructorSection={instructorSection} />
@@ -166,7 +168,7 @@ const ProductPage = async ({ searchParams }: PageProps) => {
           <AnyMoreQuestionSection lang={query.lang} />
         </div>
         <div className="mt-8 lg:-mt-64 lg:col-span-1">
-          <div className="sticky top-24 space-y-8 z-50">
+          <div className="sticky top-24 space-y-8 z-30">
             <Checklist data={data} />
           </div>
         </div>

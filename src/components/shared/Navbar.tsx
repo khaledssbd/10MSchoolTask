@@ -1,76 +1,239 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
-import { ChevronDown, Search, Phone } from 'lucide-react';
+import {
+  ChevronDown,
+  Search,
+  Phone,
+  BookOpen,
+  GraduationCap,
+  Languages,
+  Briefcase,
+  Paintbrush,
+  Rocket,
+  Smile,
+  Award,
+  NotebookText,
+} from 'lucide-react';
+import { useState } from 'react';
+import { ReactNode } from 'react';
 
-const navLinks = [
+type Section = {
+  name: string;
+  href: string;
+  icon?: ReactNode; // icon is optional
+};
+
+type NavLink = {
+  name: string;
+  href: string;
+  sections: Section[];
+};
+
+const navLinks: NavLink[] = [
   {
     name: 'ক্লাস ৬-১২',
     href: 'https://10minuteschool.com/academic',
     sections: [
-      { name: 'এইচএসসি', href: '#', icon: '' },
-      { name: 'দশম শ্রেণি', href: '#', icon: '' },
-      { name: 'নবম শ্রেণি', href: '#', icon: '' },
-      { name: 'অষ্টম শ্রেণি', href: '#', icon: '' },
-      { name: 'সপ্তম শ্রেণি', href: '#', icon: '' },
-      { name: 'ষষ্ঠ শ্রেণি', href: '#', icon: '' },
+      {
+        name: 'এইচএসসি',
+        href: 'https://10minuteschool.com/academic/10/?group=science',
+        icon: <GraduationCap className="w-4 h-4" />,
+      },
+      {
+        name: 'দশম শ্রেণি',
+        href: 'https://10minuteschool.com/academic/101/?group=science',
+        icon: <BookOpen className="w-4 h-4" />,
+      },
+      {
+        name: 'নবম শ্রেণি',
+        href: 'https://10minuteschool.com/academic/9/?group=science',
+        icon: <BookOpen className="w-4 h-4" />,
+      },
+      {
+        name: 'অষ্টম শ্রেণি',
+        href: 'https://10minuteschool.com/academic/8/?group=undefined',
+        icon: <BookOpen className="w-4 h-4" />,
+      },
+      {
+        name: 'সপ্তম শ্রেণি',
+        href: 'https://10minuteschool.com/academic/7/?group=undefined',
+        icon: <BookOpen className="w-4 h-4" />,
+      },
+      {
+        name: 'ষষ্ঠ শ্রেণি',
+        href: 'https://10minuteschool.com/academic/6/?group=undefined',
+        icon: <BookOpen className="w-4 h-4" />,
+      },
     ],
   },
   {
     name: 'স্কিলস',
     href: 'https://10minuteschool.com/skills',
     sections: [
-      { name: 'সকল কোর্সসমূহ', href: '#', icon: '' },
-      { name: 'ভাষা শিক্ষা', href: '#', icon: '' },
-      { name: 'ফ্রিল্যান্সিং', href: '#', icon: '' },
-      { name: 'বান্ডেল', href: '#', icon: '' },
-      { name: 'স্কিলস এন্ড আইটি', href: '#', icon: '' },
-      { name: 'ডিজাইন এন্ড ক্রিয়েটিভ', href: '#', icon: '' },
-      { name: 'ক্যারিয়ার রেডিনেস', href: '#', icon: '' },
-      { name: 'কিডস কোর্সসমূহ', href: '#', icon: '' },
-      { name: 'প্রফেশনাল কোর্সসমূহ', href: '#', icon: '' },
-      { name: 'ফ্রি কোর্সসমূহ', href: '#', icon: '' },
+      {
+        name: 'সকল কোর্সসমূহ',
+        href: 'https://10minuteschool.com/skills',
+        icon: <BookOpen className="w-4 h-4" />,
+      },
+      {
+        name: 'ভাষা শিক্ষা',
+        href: 'https://10minuteschool.com/categories/language-learning',
+        icon: <Languages className="w-4 h-4" />,
+      },
+      {
+        name: 'ফ্রিল্যান্সিং',
+        href: 'https://10minuteschool.com/categories/freelancing',
+        icon: <Briefcase className="w-4 h-4" />,
+      },
+      {
+        name: 'বান্ডেল',
+        href: 'https://10minuteschool.com/categories/bundle',
+        icon: <NotebookText className="w-4 h-4" />,
+      },
+      {
+        name: 'স্কিলস এন্ড আইটি',
+        href: 'https://10minuteschool.com/categories/skills-and-it',
+        icon: <Rocket className="w-4 h-4" />,
+      },
+      {
+        name: 'ডিজাইন এন্ড ক্রিয়েটিভ',
+        href: 'https://10minuteschool.com/categories/design-and-creative',
+        icon: <Paintbrush className="w-4 h-4" />,
+      },
+      {
+        name: 'ক্যারিয়ার রেডিনেস',
+        href: 'https://10minuteschool.com/categories/career-readiness',
+        icon: <Award className="w-4 h-4" />,
+      },
+      {
+        name: 'কিডস কোর্সসমূহ',
+        href: 'https://10minuteschool.com/categories/kids-age-7-14',
+        icon: <Smile className="w-4 h-4" />,
+      },
+      {
+        name: 'প্রফেশনাল কোর্সসমূহ',
+        href: 'https://10minuteschool.com/categories/professional',
+        icon: <Briefcase className="w-4 h-4" />,
+      },
+      {
+        name: 'ফ্রি কোর্সসমূহ',
+        href: 'https://10minuteschool.com/categories/free',
+        icon: <BookOpen className="w-4 h-4" />,
+      },
     ],
   },
-  { name: 'ভর্তি পরীক্ষা', href: 'https://10minuteschool.com/admission' },
+  {
+    name: 'ভর্তি পরীক্ষা',
+    href: 'https://10minuteschool.com/admission',
+    sections: [],
+  },
   {
     name: 'অনলাইন ব্যাচ',
     href: 'https://10minuteschool.com/online-batch',
     sections: [
-      { name: 'অনলাইন ব্যাচ (৬ষ্ঠ-১০ম শ্রেণি)', href: '#', icon: '' },
-      { name: 'এইচএসসি', href: '#', icon: '' },
+      {
+        name: 'অনলাইন ব্যাচ (৬ষ্ঠ-১০ম শ্রেণি)',
+        href: 'https://10minuteschool.com/online-batch/',
+        icon: <GraduationCap className="w-4 h-4" />,
+      },
+      {
+        name: 'এইচএসসি',
+        href: 'https://10minuteschool.com/hsc-preparation/hsc-2026/',
+        icon: <GraduationCap className="w-4 h-4" />,
+      },
     ],
   },
   {
     name: 'ইংলিশ সেন্টার',
     href: 'https://10minuteschool.com/english-centre',
     sections: [
-      { name: 'সকল প্রোগ্রামসমূহ', href: '#', icon: '' },
-      { name: 'IELTS প্রোগ্রাম', href: '#', icon: '' },
-      { name: 'স্পোকেন ইংলিশ (জুনিয়র)', href: '#', icon: '' },
-      { name: 'ইংলিশ ফাউন্ডেশন প্রোগ্রাম', href: '#', icon: '' },
-      { name: 'কিডস ইংলিশ', href: '#', icon: '' },
+      {
+        name: 'সকল প্রোগ্রামসমূহ',
+        href: 'https://10minuteschool.com/english-centre',
+        icon: <BookOpen className="w-4 h-4" />,
+      },
+      {
+        name: 'IELTS প্রোগ্রাম',
+        href: 'https://10minuteschool.com/product/ielts-programme',
+        icon: <Languages className="w-4 h-4" />,
+      },
+      {
+        name: 'স্পোকেন ইংলিশ (জুনিয়র)',
+        href: 'https://10minuteschool.com/product/spoken-english-junior',
+        icon: <Languages className="w-4 h-4" />,
+      },
+      {
+        name: 'ইংলিশ ফাউন্ডেশন প্রোগ্রাম',
+        href: 'https://10minuteschool.com/product/english-foundation-programme',
+        icon: <Languages className="w-4 h-4" />,
+      },
+      {
+        name: 'কিডস ইংলিশ',
+        href: 'https://10minuteschool.com/product/kids-english-programme',
+        icon: <Smile className="w-4 h-4" />,
+      },
     ],
   },
   {
     name: 'আরো',
     href: 'https://10minuteschool.com/product/ielts-course',
     sections: [
-      { name: 'চাকরি প্রস্তুতি কোর্সসমূহ', href: '#', icon: '' },
-      { name: 'ব্লগ', href: '#', icon: '' },
-      { name: 'বুক স্টোর', href: '#', icon: '' },
-      { name: 'ফ্রি নোটস ও গাইড', href: '#', icon: '' },
-      { name: 'একাডেমিক ডিজিটাল কন্টেন্ট', href: '#', icon: '' },
-      { name: 'সার্টিফিকেট ভেরিফাই করুন', href: '#', icon: '' },
-      { name: 'ক্যারিয়ার / নিয়োগ বিজ্ঞপ্তি', href: '#', icon: '' },
-      { name: 'শিক্ষক হিসাবে যোগ দিন', href: '#', icon: '' },
-      { name: 'অ্যাফিলিয়েট হিসাবে যোগ দিন', href: '#', icon: '' },
+      {
+        name: 'চাকরি প্রস্তুতি কোর্সসমূহ',
+        href: 'https://10minuteschool.com/jobs-prep',
+        // icon: <Briefcase className="w-4 h-4" />,
+      },
+      {
+        name: 'ব্লগ',
+        href: 'https://blog.10minuteschool.com',
+        // icon: <FileText className="w-4 h-4" />,
+      },
+      {
+        name: 'বুক স্টোর',
+        href: 'https://10minuteschool.com/store/all',
+        // icon: <Bookmark className="w-4 h-4" />,
+      },
+      {
+        name: 'ফ্রি নোটস ও গাইড',
+        href: 'https://10minuteschool.com/resource',
+        // icon: <NotebookText className="w-4 h-4" />,
+      },
+      {
+        name: 'একাডেমিক ডিজিটাল কন্টেন্ট',
+        href: 'https://10minuteschool.com/content',
+        // icon: <FileText className="w-4 h-4" />,
+      },
+      {
+        name: 'সার্টিফিকেট ভেরিফাই করুন',
+        href: 'https://10minuteschool.com/certificate',
+        // icon: <FileSearch className="w-4 h-4" />,
+      },
+      {
+        name: 'ক্যারিয়ার / নিয়োগ বিজ্ঞপ্তি',
+        href: 'https://app.10minuteschool.com/careers',
+        // icon: <Bell className="w-4 h-4" />,
+      },
+      {
+        name: 'শিক্ষক হিসাবে যোগ দিন',
+        href: 'https://docs.google.com/forms/d/e/1FAIpQLScWh9jjyWnUKdDKET1-LHvdTxuU6-ssd0GLTI-0JlQ2MH6RzA/viewform',
+        // icon: <UserCircle className="w-4 h-4" />,
+      },
+      {
+        name: 'অ্যাফিলিয়েট হিসাবে যোগ দিন',
+        href: 'https://affiliation.10minuteschool.com',
+        // icon: <Handshake className="w-4 h-4" />,
+      },
     ],
   },
 ];
 
 const Navbar = () => {
+  const [activeMenu, setActiveMenu] = useState<string | null>(null);
+
   return (
-    <header className="sticky top-0 z-20 w-full bg-white shadow-sm border-b border-gray-200">
+    <header className="sticky top-0 z-40 w-full bg-white shadow-sm border-b border-gray-200">
       <div className="mx-auto px-4 sm:px-6 md:px-12 lg:px-20">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center space-x-4">
@@ -94,16 +257,49 @@ const Navbar = () => {
           </div>
 
           <div className="flex items-center space-x-5">
-            <nav className="hidden lg:flex items-center space-x-3">
+            <nav className="hidden lg:flex items-center space-x-3 relative">
               {navLinks.map(link => (
-                <Link
-                  href={link.href}
+                <div
                   key={link.name}
-                  className="flex items-center text-gray-600 hover:text-green-500 text-xs"
+                  className="relative"
+                  onMouseEnter={() => setActiveMenu(link.name)}
+                  onMouseLeave={() => setActiveMenu(null)}
                 >
-                  {link.name}
-                  <ChevronDown className="w-4 h-4 ml-1" />
-                </Link>
+                  <Link
+                    href={link.href}
+                    className="flex items-center text-gray-600 hover:text-green-500 text-xs py-2 px-1"
+                  >
+                    {link.name}
+                    {link.sections?.length > 0 && (
+                      <ChevronDown className="w-4 h-4 ml-1" />
+                    )}
+                  </Link>
+
+                  {/* Mega Menu */}
+                  {activeMenu === link.name && link.sections?.length > 0 && (
+                    <div className="absolute left-0 top-full w-[250px] bg-white shadow-lg rounded-b-lg border border-gray-200 p-5">
+                      <div className="flex flex-col gap-4">
+                        {link.sections.map(section => (
+                          <Link
+                            key={section.name}
+                            href={section.href}
+                            className="flex items-center space-x-2 p-2 hover:bg-gray-200 rounded-md"
+                          >
+                            {section?.icon && (
+                              <span className="text-gray-500">
+                                {section?.icon}
+                              </span>
+                            )}
+
+                            <span className="text-sm text-gray-700">
+                              {section.name}
+                            </span>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
               ))}
             </nav>
 

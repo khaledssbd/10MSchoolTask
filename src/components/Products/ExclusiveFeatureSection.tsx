@@ -16,11 +16,11 @@ const ExclusiveFeatureSection = ({
             {subSection.name}
           </h2>
 
-          <div className="bg-white rounded-md border border-dashed border-gray-300 p-6">
+          <div className="bg-white rounded-md border border-gray-300 p-6">
             {subSection.values?.map(item => (
               <div
                 key={item.id}
-                className="flex items-center justify-between space-x-3 py-5 border-b border-gray-200 last:border-b-0"
+                className="flex flex-col md:flex-row items-center justify-between space-x-3 space-y-3 py-5 border-b border-gray-200 last:border-b-0"
               >
                 <div>
                   <p className="text-gray-700 font-medium">{item.title}</p>
