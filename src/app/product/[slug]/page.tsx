@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
 import { getProductData } from '@/services/Product';
 import HeroSection from '@/components/Products/HeroSection';
 import CourseInstructor from '@/components/Products/CourseInstructor';
